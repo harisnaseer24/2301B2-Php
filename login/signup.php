@@ -13,6 +13,7 @@ require "../essentials/config.php";
     <input type="password" name="password" id="" class="form-control my-2" placeholder="Enter password">
     <input type="submit" name="signup" id="" class="form-control btn btn-primary my-2">
     </form>
+    Already have an account..? <a href="login.php">Login Now..!</a>
 </div>
     <?php 
     if(isset($_POST['signup'])){
@@ -25,15 +26,11 @@ $securePass=password_hash( $pass, PASSWORD_BCRYPT);
 // $securePass= md5($pass);
 
 //check for duplicate
-$check="SELECT * from users where email='$email';";
+$check="SELECT * from user where email='$email';";
 $result1=mysqli_query($conn, $check) or die("failed to run query");
 if(mysqli_num_rows($result1) >0){
    echo" <script>alert('user already registered')</script>";
 }else{
-
-
-
-
 $query="INSERT INTO `user`( `username`, `email`, `password`) VALUES ('$username','$email','$securePass');";
 $result=mysqli_query($conn, $query);
 if($result){

@@ -1,7 +1,8 @@
 <?php 
 include "../essentials/header.php";
-// require "../essentials/config.php";
-
+require "../essentials/config.php";
+session_start();
+if(isset($_SESSION['username'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,19 +34,25 @@ include "../essentials/header.php";
       <div class="d-flex me-7" >
       <div class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Haris Naseer
+          <?php echo $_SESSION['username']; ?>
           </a>
       <ul class="dropdown-menu me-4">
-            <li><a class="dropdown-item" href="#">harisnaseer258@gmail.com</a></li>
-            <li><a class="dropdown-item" href="#">03172021951</a></li>
-    
+            <li><a class="dropdown-item" href="#">  <?php echo $_SESSION['email']; ?></a></li>
+           
             <li> <a class="mx-3 btn btn-outline-success" href="logout.php" type="submit">LOG OUT</a></li>
           </ul>
-</div>
-       
+</div>  
 </div>
     </div>
   </div>
 </nav>
 </body>
 </html>
+<?php 
+
+      }
+      else{
+        header("location: login.php");
+      }
+
+?>
