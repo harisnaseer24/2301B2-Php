@@ -3,29 +3,32 @@ include "../essentials/header.php";
 require "../essentials/config.php";
 
 if(isset($_POST['submit'])){
+
 $name=$_POST['name'];
 $price=$_POST['price'];
-// echo"<pre>";
-// print_r($_FILES);
-// echo"</pre>";
+echo"<pre>";
+print_r($_FILES);
+echo"</pre>";
 
 if($_FILES['image']['error']==4){
   echo"<script>alert('image does not exist')</script>";
 }
+
 else{
     $imagename=$_FILES['image']['name'];
     $imagsize=$_FILES['image']['size'];
     $tmpname=$_FILES['image']['tmp_name'];
 $validExtension=['jpg','png','jpeg'];
 
-$extension=explode(".",$imagename);
-// echo"<pre>";
-// print_r($extension);
-// echo"</pre>";
 
- $extension=strtolower(end($extension));//jpg
+ $extension=explode(".",$imagename);
+echo"<pre>";
+print_r($extension);
+echo"</pre>";
 
-    if($imagsize > 1000000){
+$extension=strtolower(end($extension));//jpg
+
+    if($imagsize > 2000000){
         echo"<script>alert('File is too large.')</script>";
     }
     elseif(!in_array($extension,$validExtension)){
@@ -33,7 +36,8 @@ $extension=explode(".",$imagename);
     }
     else{
       $newimgname=uniqid(); 
-       $newimgname .= ".".$extension;
+       $newimgname .= ".".$extension;//67564565656456.jpg
+       
 move_uploaded_file($tmpname,"img/".$newimgname);
 
 
@@ -43,7 +47,7 @@ move_uploaded_file($tmpname,"img/".$newimgname);
         echo"<script>alert('Mobile added succesfully in database')</script>";
     }
     else{
-        echo"<script>alert('Mobile added succesfully in database')</script>";
+        echo"<script>alert('Mobile is not succesfully added in database')</script>";
     }
 
     }

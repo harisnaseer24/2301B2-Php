@@ -2,7 +2,7 @@
 include "../essentials/header.php";
 require "../essentials/config.php";
 session_start();
-if(isset($_SESSION['username'])){
+if(isset($_SESSION['loggedin'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,5 +54,7 @@ if(isset($_SESSION['username'])){
       else{
         header("location: login.php");
       }
+
+      
 
 ?>

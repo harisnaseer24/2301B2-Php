@@ -70,7 +70,7 @@ echo'
   </li>';}
 
 for($i=1; $i<=$totalpages; $i++){
-    if($page ==$i){
+    if($page == $i){ //2 == 2
         $activeclass="active";
        
     }else{

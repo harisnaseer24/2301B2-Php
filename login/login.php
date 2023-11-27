@@ -23,6 +23,7 @@ if($pass_verification){
 session_start();
 $_SESSION['username']=$username;
 $_SESSION['email']=$email;
+$_SESSION['loggedin']=true;
 
 header("location: home.php");
 
@@ -51,6 +52,7 @@ else{
 <h2 class="text-center">Login to your account</h2> 
     <input type="email" name="loginemail" id="" class="form-control my-2" placeholder="Enter email">
     <input type="password" name="loginpass" id="" class="form-control my-2" placeholder="Enter password">
+    <a href="forgotpass.php">Forgot your password..?</a>
     <input type="submit" name="login" id="" class="form-control btn btn-primary my-2">
     </form>
 
@@ -59,18 +61,3 @@ Don't have account..? <a href="signup.php">Create Now..!</a>
 </div>
 </body>
 </html>
-
-user centered design
-simplicity
-clarity
-Feedback
-consistency
-responsiveness
-error prevention and handling
-user guidance 
-task efficiency 
-safety
-testing & iteration
-touchscreen & gestures
-multimodal interaction
-color & contrast
