@@ -23,6 +23,7 @@ if($pass_verification){
 session_start();
 $_SESSION['username']=$username;
 $_SESSION['email']=$email;
+
 $_SESSION['loggedin']=true;
 
 header("location: home.php");
