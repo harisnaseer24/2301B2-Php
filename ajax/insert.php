@@ -10,9 +10,8 @@ $pass=$_POST['pass'];
 if(!$name=="" && !$email=="" && !$pass==""){
 
 
-$insert= "INSERT INTO `user_info`(`id`, `name`, `email`, `password`) VALUES ('$id','$name','$email','$pass')";
+$insert= "INSERT INTO `user_info`(`id`, `name`, `email`, `password`) VALUES ('$id','$name','$email','$pass') ON DUPLICATE KEY UPDATE `name` = '$name', `email` = '$email', `password` ='$pass'";
 $result=mysqli_query($conn, $insert) or die("failed");
-
 
 if($result){
     echo "'Record Inserted Successfully.'";
@@ -26,3 +25,4 @@ else{
 
 
 ?>
+
