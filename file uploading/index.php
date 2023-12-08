@@ -1,6 +1,7 @@
 <?php 
 include "../essentials/header.php";
 require "../essentials/config.php";
+include("../display/nav.php");
 
 if(isset($_POST['submit'])){
 
@@ -68,5 +69,7 @@ move_uploaded_file($tmpname,"img/".$newimgname);
 </form>
 
     </div>
-</body>
+
+<?php 
+include("../display/footer.php");?></body>
 </html>
