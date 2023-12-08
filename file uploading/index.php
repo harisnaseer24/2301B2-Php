@@ -4,7 +4,7 @@ require "../essentials/config.php";
 include("../display/nav.php");
 
 if(isset($_POST['submit'])){
-
+$brand_id=$_POST['brand'];
 $name=$_POST['name'];
 $price=$_POST['price'];
 echo"<pre>";
@@ -42,7 +42,7 @@ $extension=strtolower(end($extension));//jpg
 move_uploaded_file($tmpname,"img/".$newimgname);
 
 
-       $query="INSERT INTO `mobiles`( `name`, `price`, `image`) VALUES ('$name','$price','$newimgname');";
+       $query="INSERT INTO `mobiles`( `name`, `price`, `image`,`brand_id`) VALUES ('$name','$price','$newimgname','$brand_id');";
     $result=mysqli_query($conn,$query);
     if($result){
         echo"<script>alert('Mobile added succesfully in database')</script>";
@@ -62,6 +62,22 @@ move_uploaded_file($tmpname,"img/".$newimgname);
 <form action="" method="post" enctype="multipart/form-data">
 <input class="form-control my-3" type="text" name="name" id="name" placeholder="Enter mobile's name">
 <input class="form-control my-3" type="number" name="price" id="price" placeholder="Enter mobile's price">
+<select class="form-control my-3"  name="brand" id="brand" placeholder="Select mobile's brand">
+    <option value="" selected disabled>Choose brand</option>
+    <?php 
+    
+    $query1="SELECT * FROM `brands`;";
+    $result1=mysqli_query($conn, $query1) or die("failed to execute");
+    if(mysqli_num_rows($result1) > 0){
+        while($row1=mysqli_fetch_assoc($result1)){
+            ?>
+            <option value="<?=$row1['brand_id']?>"><?=$row1['brand_name']?></option>
+              
+            <?php
+        }
+    }
+    
+    ?>
 <input class="form-control my-3" type="file" name="image" id="image" accept=".jpg, .png, .jpeg">
 <input class="form-control my-3 btn btn-success" type="submit" name="submit" value="ADD">
 
