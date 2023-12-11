@@ -57,8 +57,8 @@ move_uploaded_file($tmpname,"img/".$newimgname);
 
 ?>
 <body>
-    <div class="container my-5">
-        <h1 class="text-center display-3 fw-semibold">PRODUCT REGISTERATION</h1>
+    <div class="container my-5 "style="min-height:80vh;">
+        <h1 class="text-center display-3 fw-semibold">Welcome to <img class="img-fluid" src="./img/logo2.png" width=120 alt=""></h1>
 <form action="" method="post" enctype="multipart/form-data">
 <input class="form-control my-3" type="text" name="name" id="name" placeholder="Enter mobile's name">
 <input class="form-control my-3" type="number" name="price" id="price" placeholder="Enter mobile's price">

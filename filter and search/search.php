@@ -8,14 +8,16 @@ include("nav.php");
        min-height:80vh;
     }
 </style>
+
 <div class="container abc" >
-<div class="row">
+<div class="row" >
 <?php 
 if(isset($_GET['search'])){
 $search=$_GET['search'];
    $searchQuery="SELECT * FROM `mobiles` m inner join brands b on m.brand_id=b.brand_id WHERE m.name like '%$search%' OR m.price like '%$search%' OR b.brand_name like '%$search%'";
    $result=mysqli_query($conn, $searchQuery) or die("failed");
    if(mysqli_num_rows($result) > 0){
+     echo"<h1 class='my-5 display-3 text-primary text-center'>Showing results for \"$search\".</h1>";
     while($row=mysqli_fetch_assoc($result)){
         $image=$row["image"];    
     echo'
