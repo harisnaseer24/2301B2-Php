@@ -1,7 +1,7 @@
 <?php 
 include "../essentials/header.php";
 require "../essentials/config.php";
-include("../filter and search/nav.php");
+include("./nav.php");
 
 if(isset($_POST['submit'])){
 $brand_id=$_POST['brand'];
@@ -87,5 +87,5 @@ move_uploaded_file($tmpname,"img/".$newimgname);
     </div>
 
 <?php 
-include("../filter and search/footer.php");?></body>
+include("footer.php");?></body>
 </html>

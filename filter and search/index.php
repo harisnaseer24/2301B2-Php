@@ -9,19 +9,20 @@ $active="active";
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
 }
 </style>
-<div class="container my-4">
-<a href="index.php?get=all" class="btn btn-outline-primary rounded-3 <?=$active?>">ALL</a>
+<div class="container my-4 d-flex justify-content-center">
+<a href="index.php?get=all" class="btn btn-outline-primary mx-2 py-2 px-3 rounded-5 <?=$active?>">ALL</a>
     <?php 
     $query="SELECT * FROM brands;";
     $result=mysqli_query($conn, $query) or die("failed to execute");
     if(mysqli_num_rows($result) > 0){
         while($row=mysqli_fetch_assoc($result)){
             ?>
-            <a href="index.php?brand_id=<?=$row["brand_id"]?>" class="btn btn-outline-primary rounded-3 <?=$active?>"><?=$row["brand_name"]?></a>  
+            <a href="index.php?brand_id=<?=$row["brand_id"]?>" class="btn btn-outline-primary mx-2 py-2 px-3 rounded-5 <?=$active?>"><?=$row["brand_name"]?></a>  
             <?php
         }
     }
-    ?>
+    ?></div>
+    <div class="container">
     <div class="row">
 <?php 
 if(isset($_GET['brand_id'])){
@@ -35,7 +36,7 @@ if(isset($_GET['brand_id'])){
     echo'
     <div class="col-lg-4 col-md-6 col-sm-12 my-4 rounded-4">
     <div class="card" style="border:none;">
-      <img src="../file uploading/img/'.$image.'" class="card-img-top" alt="...">
+      <img src="./img/'.$image.'" class="card-img-top" alt="..." height=530>
       <div class="card-body">
         <h5 class="card-title">'.$row2["name"].'</h5>
         <p>Powered by '.$row2["brand_name"].'</p>
@@ -57,7 +58,7 @@ else{
         echo'
         <div class="col-lg-4 col-md-6 col-sm-12 my-4 rounded-4">
         <div class="card" style="border:none;" >
-          <img src="../file uploading/img/'.$image.'" class="card-img-top" alt="...">
+          <img src="./img/'.$image.'" class="card-img-top" alt="..." height=530>
           <div class="card-body">
             <h5 class="card-title">'.$row1["name"].'</h5>
             <a href="#" class="btn btn-primary">'.$row1["price"].'</a>
