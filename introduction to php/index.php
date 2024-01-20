@@ -73,9 +73,12 @@ $cars= array("Mustang","Audi","Supra","Mercedes","Buggati Chiron");
 echo "<pre>";
 print_r($cars);
 echo "</pre>";
+$rand =substr(md5(uniqid()),24);
+echo "840545955".$rand;
 
     ?>
    
 
+  
 </body>
 </html>

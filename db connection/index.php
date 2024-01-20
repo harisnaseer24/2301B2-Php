@@ -1,7 +1,11 @@
 <?php 
    include "header.php";
    require "config.php";
+?>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
 
+
+<?php
 
     $query="SELECT * FROM student;";
 
@@ -12,35 +16,21 @@
 
 
         ?>
-    <style>
-
-        table{
-            background-color:rgba(144,44,144,0.7);
-            width: 90%;
-            margin:auto;
-            font-size: 26px;
-            color:white
-
-        
-        }
-        th{
-            background-color:black;
-            color:white;
-        }
-    </style>
+ 
 
 <body>
     <caption><h1 class="text-center">Student Table</h1></caption>
-        <table border=1 cellpadding="7px">
-           
+        <table border=1 cellpadding="7px" id="myTable">
+           <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Address</th>
                 <th>Age</th>
                 <th>Actions</th>
-
-            </tr>           
+            </tr>   
+              </thead>  
+            <tbody>
 <?php
         
       while($row=mysqli_fetch_assoc($res)){
@@ -57,6 +47,7 @@ echo "<tr>";
          echo "</tr>";
 
       }?>
+      </tbody>
 </table>
 
     <?php 
@@ -69,5 +60,10 @@ else{
 
 
     ?>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script>
+        let table = new DataTable('#myTable');
+    </script>
 </body>
 </html>
