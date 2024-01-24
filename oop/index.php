@@ -35,7 +35,7 @@ public function ShowDisplay(){
 class Mobile extends Devices{
 public function ShowDetails(){
     echo "<h1>Showing Details of Mobiles:</h1>";
-    //setting protectrd property "cpu"
+    //setting protected property "cpu"
     $this->cpu="g88";
     echo $this->name."<br>";
     echo $this->price."<br>";
@@ -57,7 +57,7 @@ $techno->ram="8gb";
 $techno->SetDisplay("Amoled");
 
 //getter function - object ka data lekar aana.
-$techno->ShowDetails();
+// $techno->ShowDetails();
 // $techno->ShowDisplay();
 
 $hp_pavillion= new Devices();
@@ -76,4 +76,62 @@ $hp_pavillion->ram="8gb";
 // 4. abstraction
 // Example: website admin, facebook user, money transfer.
 
+
+//24-1-24
+
+class User{
+   public $email, $pass, $age;
+
+   //Constructor- to initialize the object (non-parameterized)
+//    public function __construct(){
+//     $this->email="abc@gmail.com";
+//     $this->pass="abc123";
+//     $this->age=24;
+//    }
+
+   //Constructor- to initialize the object (parameterized)
+   public function __construct($email="xyz@gmail.com",$pass="123",$age=18){
+    $this->email=$email;
+    $this->pass=$pass;
+    $this->age=$age;
+   }
+
+   public function showuser(){
+   echo $this->email."<br>";
+   echo $this->pass."<br>";
+   echo $this->age."<br>";
+   }
+
+
+
+}
+
+
+// $user1= new User();
+// $user1->showuser();
+
+// $farhan= new User("farhan@gmail.com","abc123",24);
+// $farhan->showuser();
+
+if(isset($_POST['submit'])){
+$email=$_POST['email'];
+$password=$_POST['password'];
+$age=$_POST['age'];
+
+//if user submit empty form then the expression would be : $newuser= new User("","","");
+//so default values will not be applied.
+
+$newuser= new User($email,$password,$age);
+$newuser->showuser();
+
+}
+
+
 ?>
+<h1>Enter Details</h1>
+<form action="" method="post">
+    <input type="email" name="email" id=""><br>
+    <input type="password" name="password" id=""><br>
+    <input type="number" name="age" id=""><br>
+    <input type="submit" name="submit" value="submit" id="">
+</form>
